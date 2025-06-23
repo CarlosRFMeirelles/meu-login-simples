@@ -28,7 +28,7 @@ form {
     gap: 1rem;
 }
 
-form h3 {
+form h3, h4{
     text-align: center;
     color: #333;
 }

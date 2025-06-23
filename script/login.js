@@ -4,23 +4,30 @@ document.getElementById('enviar').onclick = (event) => {
     let login = document.getElementById('login').value;
     let senha = document.getElementById('senha').value;
 
-    const users = [
-        { login: "admin", senha: "admin" },
-        { login: "user", senha: "1234" }
-    ];
-
     if (login.trim() === "" || senha.trim() === "") {
         window.alert("Preencha todos os campos");
         return;
     }
 
-    const usuario = users.find(user => user.login === login && user.senha === senha);
+    const dados = localStorage.getItem(login);
 
-    if (usuario) {
-        sessionStorage.setItem("welcome", usuario.login);
+    if (!dados) {
+        alert("Usuário não encontrado!");
+        return;
+    }
+
+    const usuario = JSON.parse(dados);
+
+    if (usuario.senha === senha) {
         window.alert("Sucesso");
         window.location.href = "home.html";
+        sessionStorage.setItem("welcome", usuario.login);
     } else {
-        window.alert("Usuário ou senha incorretos");
+        window.alert("Senha incorreta");
     }
+};
+
+document.getElementById('cadastreAgora').onclick = (event) => {
+    event.preventDefault();
+    window.location.href = "cadastro.html";
 };

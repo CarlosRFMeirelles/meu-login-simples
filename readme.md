@@ -42,6 +42,4 @@ Senha: 1234
 - Usar hashes para senhas.
 - Implementar validação mais robusta.
 
----
-
 Feito por [Carlos Meirelles] - [https://github.com/CarlosRFMeirelles]
